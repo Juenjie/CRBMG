@@ -1,31 +1,33 @@
 # CRBMG
-CRBMG solves the (to be filled later).
+CRBMG solves the (to be filled later). The Unit of the equations are Rationalized-Lorentz-Heaviside-QCD.
 
-## EMsolver Module
+## 1. The EMsolver Module
 EMsolver implements the Jefimenko's equations on GPUs. 
-If you use our code to perform calculations, please cite via
+If you use this module to perform electromagnetic calculations, please cite us via
 
 (to be filled later)
 
 > **To understand how EMsolver works, please refer to**
 
-## Installation
+### 1.1 Installation
 Installation via pip is encouraged. To run EMsolver, the following packages need to be pre-installed:
   - Numba
   - Ray
   - cupy
+  - matplotlib
+  - cudatoolkit
 
-To start up, create a conda environment and install EMsolver:
+To start up, create a conda environment and install CRBMG:
 ```
 # create a new environment
-$: conda create -n JefiGPU
+$: conda create -n CRBMG
 
 # install relavant package sequentially
-$: pip install JefiGPU
+$: pip install CRBMG
 ```
 Execute the test file ---  **'test of EMsolver.ipynb'** in the repository before any real tasks.
 
-## Usage via the example
+### 1.2 Usage via an example
 The following codes demonstrate an axample of how to use EMsolver.
 ```
 from EMsolver.solver import EMsolver
@@ -42,9 +44,9 @@ from timeit import default_timer as timer
 # start ray server
 ray.init(ignore_reinit_error=True)
 ```
-Suppose that the sources of the \rho and J are in region [[-3, 3],[-3, 3],[-3, 3]] GeV^-3, 
+Suppose that the sources of charge density \rho and current density J are in region [[-3, 3],[-3, 3],[-3, 3]] GeV^-3, 
 while the observational region of EM fields are in region [[-3, 3],[-3, 3],[10, 16]] GeV^-3. 
-If we take 5 grids in each direction, then we have
+If we take 5 grids in each spatial direction, then we have
 ```
 # the regions are seperated as the source region and the observation region
 x_grid_size_o, y_grid_size_o, z_grid_size_o = 5,5,5
@@ -57,8 +59,8 @@ dx_o, dy_o, dz_o, x_left_boundary_o, y_left_boundary_o, z_left_boundary_o = \
 dx_s, dy_s, dz_s, x_left_boundary_s, y_left_boundary_s, z_left_boundary_s = \
                        6/x_grid_size_s, 6/y_grid_size_s, 6/z_grid_size_s, -3, -3, 10
 ```
-Jefimenko's equations involve an integration of retarded time. 
-In this example, the longest distance between the source and observational region is math.sqrt(6^2+6^2+19^2) ~ 20.81 GeV^-1.
+Jefimenko's equations involve integrations of the retarded time. 
+In this example, the longest distance between the source and observational regions is math.sqrt(6^2+6^2+19^2) ~ 20.81 GeV^-1.
 Therefore, if we choose dt = 0.05 GeV^-1, the maximum length of time_snapshots should be 20.81/0.05 ~ 420.
 This means that we only need to store 420 time steps of \rho and J in the GPU memory.
 ```
@@ -71,7 +73,7 @@ We also choose the GPU '0'
 ```
 i_GPU = '0'
 ```
-Now we load the remote function
+Now we load the remote class
 ```
 # load the remote server and set up the constant sources of \rho and J
 f = EMsolver.remote(len_time_snapshots, i_GPU, \
@@ -85,7 +87,7 @@ f = EMsolver.remote(len_time_snapshots, i_GPU, \
 rho= np.ones(x_grid_size_s*y_grid_size_s*z_grid_size_s, dtype=np.float32)
 Jx, Jy, Jz = (np.ones(x_grid_size_s*y_grid_size_s*z_grid_size_s, dtype=np.float32) for _ in range(3))       
 ```
-If we only save the data of E and B in the XOY plane
+If we only save the data of E and B in the XOY plane, the execution will be
 ```
 # This is for saving zero E and B, can be neglected if not used.
 Ex, Ey, Bx, By = (np.zeros(x_grid_size_s*y_grid_size_s*z_grid_size_s, dtype=np.float32) for _ in range(4))
@@ -116,5 +118,6 @@ for time in range(410):
 end = timer()
 print('evaluation time:',end-start)   
 ```
-
+> the calculated result of Ex_list[120] will be:
+  
 
