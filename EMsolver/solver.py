@@ -1,7 +1,6 @@
 # from numba import cuda, float32
 import numpy as np
 import math
-from numba_timer import cuda_timer
 import os
 import cupy
 from numba import cuda
