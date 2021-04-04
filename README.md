@@ -23,6 +23,10 @@ To start up, create a conda environment and install CRBMG:
 $: conda create -n CRBMG
 
 # install relavant package sequentially
+$: conda install numba
+$: pip install -U ray
+$: conda install cupy matplotlib
+$: conda install matplotlib
 $: pip install CRBMG
 ```
 Execute the test file ---  **'test of EMsolver.ipynb'** in the repository before any real tasks.
@@ -67,7 +71,7 @@ This means that we only need to store 420 time steps of \rho and J in the GPU me
 dt = 0.05
 # define the length of the sources
 # rho_GPU and Jx_GPU are of shape [len_time_snapshots, total_grid_size]
-len_time_snapshots = 208
+len_time_snapshots = 420
 ```
 We also choose the GPU '0'
 ```
@@ -119,5 +123,10 @@ end = timer()
 print('evaluation time:',end-start)   
 ```
 > the calculated result of Ex_list[120] will be:
-  
-
+```
+[[-8.5784625e-03, -9.4471080e-03, -9.8685343e-03, -9.4471080e-03, -8.5784625e-03],
+ [-4.6509719e-03, -5.0742337e-03, -5.1472820e-03, -5.0742328e-03, -4.6509719e-03],
+ [ 2.4012384e-10,  0.0000000e+00, -9.6049529e-11, -2.4012384e-10, -2.2411557e-10],
+ [ 4.6509723e-03,  5.0742342e-03,  5.1472820e-03,  5.0742342e-03,  4.6509723e-03],
+ [ 8.5784635e-03,  9.4471108e-03,  9.8685334e-03,  9.4471090e-03,  8.5784625e-03]]
+```
