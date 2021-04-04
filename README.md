@@ -130,3 +130,27 @@ print('evaluation time:',end-start)
  [ 4.6509723e-03,  5.0742342e-03,  5.1472820e-03,  5.0742342e-03,  4.6509723e-03],
  [ 8.5784635e-03,  9.4471108e-03,  9.8685334e-03,  9.4471090e-03,  8.5784625e-03]]
 ```
+
+## License
+The package is coded by Jun-Jie Zhang of University of Science and Technology of China.
+
+This package is free you can redistribute it and/or modify it under the terms of the Apache License Version 2.0, January 2004 (http://www.apache.org/licenses/).
+
+For further questions and technical issues, please contact us at
+
+zjacob@mail.ustc.edu.cn (Jun-Jie Zhang 张俊杰)
+
+**File Structure**
+
+CRBMG
+│   README.md 
+│   LICENSE
+│   setup.py 
+│   test of EMsolver.ipynb
+│
+└───EMsolver
+    │   cuda_functions.py
+    │   region_distance.py
+    │   slover.py
+    │   __init__.py
+
