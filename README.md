@@ -1,5 +1,5 @@
 # CRBMG
-CRBMG solves the (to be filled later). The Unit of the equations are Rationalized-Lorentz-Heaviside-QCD.
+CRBMG solves the (to be filled later). The equations are in **Rationalized-Lorentz-Heaviside-QCD Unit**.
 
 ## 1. The EMsolver Module
 EMsolver implements the Jefimenko's equations on GPUs. 
@@ -132,7 +132,7 @@ print('evaluation time:',end-start)
 ```
 
 ## License
-The package is coded by Jun-Jie Zhang of University of Science and Technology of China.
+The package is coded by Jun-Jie Zhang.
 
 This package is free you can redistribute it and/or modify it under the terms of the Apache License Version 2.0, January 2004 (http://www.apache.org/licenses/).
 
@@ -141,7 +141,7 @@ For further questions and technical issues, please contact us at
 zjacob@mail.ustc.edu.cn (Jun-Jie Zhang 张俊杰)
 
 **File Structure**
-
+```
 CRBMG
 │   README.md 
 │   LICENSE
@@ -153,4 +153,4 @@ CRBMG
     │   region_distance.py
     │   slover.py
     │   __init__.py
-
+```
