@@ -26,6 +26,9 @@ $: conda create -n CRBMG python=3.8
 $: conda install numba
 $: pip install -U ray
 $: conda install cupy matplotlib
+
+$ git clone https://github.com/Juenjie/CRBMG
+$ cd CRBMG
 ```
 Execute the test file ---  **'test of EMsolver.ipynb'** in the repository before any real tasks.
 
