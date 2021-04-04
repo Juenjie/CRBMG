@@ -10,7 +10,7 @@ If you use this module to perform electromagnetic calculations, please cite us v
 > **To understand how EMsolver works, please refer to**
 
 ### 1.1 Installation
-Installation via pip is encouraged. To run EMsolver, the following packages need to be pre-installed:
+To run EMsolver, the following packages need to be pre-installed:
   - Numba
   - Ray
   - cupy
@@ -26,7 +26,6 @@ $: conda create -n CRBMG python=3.8
 $: conda install numba
 $: pip install -U ray
 $: conda install cupy matplotlib
-$: pip install CRBMG
 ```
 Execute the test file ---  **'test of EMsolver.ipynb'** in the repository before any real tasks.
 
