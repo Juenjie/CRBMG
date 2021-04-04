@@ -20,13 +20,12 @@ Installation via pip is encouraged. To run EMsolver, the following packages need
 To start up, create a conda environment and install CRBMG:
 ```
 # create a new environment
-$: conda create -n CRBMG
+$: conda create -n CRBMG python=3.8
 
 # install relavant package sequentially
 $: conda install numba
 $: pip install -U ray
 $: conda install cupy matplotlib
-$: conda install matplotlib
 $: pip install CRBMG
 ```
 Execute the test file ---  **'test of EMsolver.ipynb'** in the repository before any real tasks.
