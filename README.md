@@ -33,7 +33,8 @@ $ git clone https://github.com/Juenjie/CRBMG
 $ cd CRBMG
 $ jupyter notebook
 ```
-**Note that the installation of Ray requires pip and compatible python versions! Usually this can be solved by using a lower version of Python**
+**Note that the installation of Ray requires pip and compatible python versions! Usually this can be solved by using a lower version of Python.**
+
 Execute the test file ---  **'test of EMsolver.ipynb'** in the repository before any real tasks.
 
 ### 1.2 Usage via an example
