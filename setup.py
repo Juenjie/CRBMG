@@ -18,5 +18,4 @@ setuptools.setup(
         "License :: Apache 2.0",
         "Operating System :: Linux",
     ],
-    python_requires='>=3.8',
 )
