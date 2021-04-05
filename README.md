@@ -21,6 +21,7 @@ To start up, create a conda environment and install CRBMG:
 ```
 # create a new environment
 $: conda create -n CRBMG python=3.8
+$: conda activate CRBMG
 
 # install relavant package sequentially
 $: conda install numba
